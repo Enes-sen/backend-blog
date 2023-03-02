@@ -39,37 +39,6 @@ const createpost = async (req, res) => {
     }
 };
 
-const setpost = async (req, res) => {
-    const { id:_id } = req.params;
-    const post = req.body;
-
-    try {
-        const updatedPost = await Post.findByIdAndUpdate(
-            _id,
-            { ...post },
-            { new: true }
-        );
-
-        if (!updatedPost) {
-            res.status(404).json({
-                success: false,
-                message: "Post not found"
-            });
-            return;
-        }
-
-        res.status(202).json({
-            success: true,
-            message: "Post updated successfully",
-            updatedPost
-        });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            error
-        });
-    }
-};
 const deletepost = async (req, res) => {
     const { id:_id } = req.params;
 
