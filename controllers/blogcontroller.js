@@ -67,6 +67,5 @@ module.exports = {
   getposts,
   getsinglepost,
   createpost,
-  setpost,
   deletepost,
 };
