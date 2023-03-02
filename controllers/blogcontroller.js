@@ -26,11 +26,10 @@ const getsinglepost = async (req, res) => {
    };
 
 const createpost = async (req, res) => {
-    const { title, subtitle, content } = req.body;
-    const data = { title, subtitle, content };
+    const post = req.body;
 
     try {
-        const newPost = await Post.create(data);
+        const newPost = await Post.create(post);
         res.status(201).json({ newPost });
     } catch (error) {
         res.status(500).json({
@@ -42,12 +41,12 @@ const createpost = async (req, res) => {
 
 const setpost = async (req, res) => {
     const { id } = req.params;
-    const { title, subtitle, content } = req.body;
+    const post = req.body;
 
     try {
         const updatedPost = await Post.findByIdAndUpdate(
             id,
-            { title, subtitle, content },
+            { ...post },
             { new: true }
         );
 
