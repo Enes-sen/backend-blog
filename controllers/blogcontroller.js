@@ -40,12 +40,12 @@ const createpost = async (req, res) => {
 };
 
 const setpost = async (req, res) => {
-    const { id } = req.params;
+    const { id:_id } = req.params;
     const post = req.body;
 
     try {
         const updatedPost = await Post.findByIdAndUpdate(
-            id,
+            _id,
             { ...post },
             { new: true }
         );
@@ -71,10 +71,10 @@ const setpost = async (req, res) => {
     }
 };
 const deletepost = async (req, res) => {
-    const { id } = req.params;
+    const { id:_id } = req.params;
 
     try {
-        const deletedPost = await Post.findByIdAndDelete(id);
+        const deletedPost = await Post.findByIdAndDelete(_id);
         if (!deletedPost) {
             res.status(404).json({
                 success: false,
