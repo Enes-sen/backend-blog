@@ -25,7 +25,7 @@ const getPostComments = async (req, res) => {
 };
 
 const createComment = async (req, res) => {
-  const { name, comment } = req.body;
+  const comment = req.body;
   const postId = req.params.id;
 
   try {
@@ -39,7 +39,7 @@ const createComment = async (req, res) => {
       return;
     }
 
-    const newComment = await Comment.create({ name, comment, postId });
+    const newComment = await Comment.create({ comment, postId });
     post.comments.push(newComment._id);
     await post.save();
 
