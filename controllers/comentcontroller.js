@@ -25,7 +25,7 @@ const getPostComments = async (req, res) => {
 };
 
 const createComment = async (req, res) => {
-  const { name, comment } = req.body;
+  const { name, comment,postId } = req.body;
   const postId = req.params.id;
 
   try {
