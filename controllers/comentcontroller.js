@@ -25,8 +25,8 @@ const getPostComments = async (req, res) => {
 };
 
 const createComment = async (req, res) => {
-  const { name, comment,postId } = req.body;
   const postId = req.params.id;
+  const { name, comment } = req.body;
 
   try {
     const post = await Post.findById(postId);
