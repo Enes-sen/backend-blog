@@ -8,7 +8,7 @@ const router = require("./router/routes.js");
 env.config();
 const app = express();
 const port = process.env.PORT || 4000;
-app.use(cors());
+app.use(cors({origin: "*"}));
 app.use(bodyParser.urlencoded({ limit:"30mb", extended: true }));
 app.use(bodyParser.json({limit:"30mb", extended: true }));
 app.use(function(req, res, next) {
