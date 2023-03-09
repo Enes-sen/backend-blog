@@ -8,13 +8,11 @@ const router = require("./router/routes.js");
 env.config();
 const app = express();
 const port = process.env.PORT || 4000;
-app.use(cors({
-  origin: ['https://blog-app-vsub.onrender.com']
-}));
+app.use(cors({origin: "*"}));
 app.use(bodyParser.urlencoded({ limit:"30mb", extended: true }));
 app.use(bodyParser.json({limit:"30mb", extended: true }));
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://blog-app-r4kr.onrender.com");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
